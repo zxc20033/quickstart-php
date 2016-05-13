@@ -6,7 +6,7 @@ A simple PHP app (using Sim: a PHP micro framework ) which can easily be deploye
 ```
 $ git clone https://github.com/peco8/quickstart-php.git
 $ cd quickstart-php
-$ docker build --tag quickstart-php .
+$ docker build --no-cache --tag quickstart-php .
 $ docker run -d -p 80:80 quickstart-php
 ```
 
