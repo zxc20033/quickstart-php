@@ -1,6 +1,8 @@
 # Using official php runtime base image
 FROM php:5.6-apache
 
+MAINTAINER "Toshiki Inami <t-inami@arukas.io>"
+
 RUN apt-get -yqq update
 RUN apt-get -yqq upgrade
 
