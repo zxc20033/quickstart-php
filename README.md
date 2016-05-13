@@ -1,5 +1,5 @@
 ## quickstart-php
-A simple Php app (using Sim: a PHP micro framework ) which can easily be deployed to Arukas.
+A simple PHP app (using Sim: a PHP micro framework ) which can easily be deployed to Arukas.
 
 ### Running locally
 
