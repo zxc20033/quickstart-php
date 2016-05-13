@@ -24,5 +24,8 @@ ADD slim/index.php /var/www/html/index.php
 # Configure supervisord
 ADD supervisord/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
+# Expose 80 for HTTP access
 EXPOSE 80
+
+# Start supervisord to controll processes
 CMD ["/usr/bin/supervisord"]
