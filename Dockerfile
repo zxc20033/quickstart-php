@@ -6,15 +6,19 @@ MAINTAINER "Toshiki Inami <t-inami@arukas.io>"
 ENV SLIM_VERSION "^3.4.0"
 
 # Install curl, git and supervisor, and then clean up
-RUN apt-get update &&  \
-    apt-get install -y curl git supervisor && \
+RUN apt-get update -q && \
+    apt-get install -y -qq  \
+                      curl \
+                      git \
+                      supervisor && \
     apt-get clean && \
     apt-get autoclean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Install Slim framework
+WORKDIR /var/www/html
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer && \
-    cd /var/www/html && composer require slim/slim $SLIM_VERION && \
+    composer require slim/slim $SLIM_VERION && \
     rm -rf /usr/local/bin/composer
 
 # Enable mod_rewrite for apache2.2
@@ -28,6 +32,8 @@ ADD slim/slim-apache.conf /etc/apache2/sites-available/000-default.conf
 ADD slim/index.php /var/www/html/index.php
 
 # Configure supervisord
+RUN mkdir -p /etc/supervisor/conf.d/ && \
+    mkdir -p /var/log/supervisor/
 ADD supervisord/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 # Expose 80 for HTTP access
