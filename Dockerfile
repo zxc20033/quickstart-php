@@ -25,16 +25,16 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 RUN a2enmod rewrite
 
 # Congigure apache2
-ADD slim/.htaccess /var/www/html/.htaccess
-ADD slim/slim-apache.conf /etc/apache2/sites-available/000-default.conf
+COPY slim/.htaccess /var/www/html/.htaccess
+COPY slim/slim-apache.conf /etc/apache2/sites-available/000-default.conf
 
 # Add Slim default routing file
-ADD slim/index.php /var/www/html/index.php
+COPY slim/index.php /var/www/html/index.php
 
 # Configure supervisord
 RUN mkdir -p /etc/supervisor/conf.d/ && \
     mkdir -p /var/log/supervisor/
-ADD supervisord/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+COPY supervisord/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 # Expose 80 for HTTP access
 EXPOSE 80
