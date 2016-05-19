@@ -7,7 +7,7 @@ A simple PHP app ( using Sim: a PHP micro framework http://www.slimframework.com
 $ git clone https://github.com/peco8/quickstart-php.git
 $ cd quickstart-php
 $ docker build --no-cache --tag quickstart-php .
-$ docker run --rm -d -p 80:80 quickstart-php
+$ docker run -d -p 80:80 quickstart-php
 ```
 
 Your app should now be running:
