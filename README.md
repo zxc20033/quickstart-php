@@ -19,7 +19,7 @@ Hello Arukas
 
 ## Deploying to Arukas
 
-[Install the Arukas CLI.](https://github.com/arukasio/cli),
+[Install the Arukas CLI](https://github.com/arukasio/cli),
 
 or If you have docker installed already, try
 ```
