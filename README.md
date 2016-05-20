@@ -4,7 +4,7 @@ A simple PHP app ( using [Sim](http://www.slimframework.com/): a PHP micro frame
 ## Running locally
 
 ```
-$ git clone git@github.com:peco8/quickstart-nodejs.git
+$ git clone git@github.com:peco8/quickstart-php.git
 $ cd quickstart-php
 $ docker build --no-cache --tag quickstart-php .
 $ docker run -d -p 80:80 quickstart-php
