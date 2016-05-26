@@ -29,7 +29,7 @@ $ docker run --rm -e ARUKAS_JSON_API_TOKEN=<APIT_TOKEN> \
                                         --mem=512 \
                                         --ports=80:tcp peco8/quickstart-php
 ```
-## Author
+## Authors
 
 * Toshiki Inami (<t-inami@arukas.io>)
 
