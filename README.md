@@ -14,7 +14,7 @@ Your app should now be running:
 
 ```
 $ curl 192.168.59.103:80/hello/Arukas
-Hello Arukas
+Hello world
 ```
 
 ## Deploying to Arukas
