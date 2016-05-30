@@ -6,14 +6,11 @@ MAINTAINER "Toshiki Inami <t-inami@arukas.io>"
 ENV SLIM_VERSION "^3.4.0"
 
 # Install curl, git and supervisor, and then clean up
-RUN apt-get update -q && \
-    apt-get install -y -qq  \
-                      curl \
-                      git \
-                      supervisor && \
-    apt-get clean && \
-    apt-get autoclean && \
-    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+RUN apt-get update && apt-get install -y \
+      curl \
+      git \
+      supervisor \
+    && rm -rf /var/lib/apt/lists/*
 
 # Install Slim framework
 WORKDIR /var/www/html
