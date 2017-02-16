@@ -2,13 +2,13 @@
 $json_event = $_POST['json'];
 $test = json_decode(str_replace('\n', '', $json_event), true);
 
-
 $schedules = "BEGIN:VCALENDAR
 VERSION:2.0
 METHOD:PUBLISH
 PRODID:";    
 $schedules .= "-//Drupal iCal API//EN";
-
+error_reporting(0);
+ini_set('display_errors', 0);
 foreach($test as $event)
 {	
 	$description = explode('講師：', $event['description']);
@@ -45,9 +45,11 @@ for($i=1;$i<=10;$i++){
 }
 */ 
 $schedules .= "\nEND:VCALENDAR";
+ob_start();
 header( "Content-type: text/calendar");
 header("Content-Disposition: attachment; filename=\"VTC_calendar.ics\"");
 header("Expires: 0");
+ob_end_flush();
 echo $schedules;
 exit;
 
