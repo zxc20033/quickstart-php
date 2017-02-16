@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script type="text/javascript" src="date.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	</head>
+	<body>
+		<div class="bar">VTC Calendar</div>
+		<div class="container">
+			<h4>Please Login You Myporty</h4>
+			<div><button id="bnt_myporty" type="button" class="btn btn-primary  btn-block">Myporty</button></div>
+			<h4>Copy Data</h4>
+			<div><button id="bnt_json" type="button" class="btn btn-primary  btn-block">Get Data</button></div>
+			<form action="download.php" method="post">
+				<div class="form-group">
+					<label for="comment">JSON File</label>
+					 <textarea name="json" class="form-control" rows="5" id="comment"></textarea>
+				</div>
+				<div class="form-group">
+					<input type="submit" class="form-control" id="pwd">
+				</div>
+			</form>
+			<div class="iframe login"><iframe src="https://myportal.vtc.edu.hk/"></iframe></div>
+			<div class="iframe json_data"></div>
+
+		</div>
+	</body>
+</html>
+
+<script>
+	var start = 0;
+	var end = 0;
+	var dt = new Date();
+	var now_year = dt.getFullYear();
+	var now_date = dt.getDay();
+	var now_month = dt.getMonth()+1;
+	if(now_month > 8 && now_month < 13){
+		start = Date.parse("9-1-"+now_year+" 00:00:00").getTime()/1000;
+		now_year = now_year+1;
+		end = Date.parse("1-20-"+now_year+" 00:00:00").getTime()/1000;
+	}else if(now_month > 1 && now_month < 5){
+		start = Date.parse("1-20-"+now_year+" 00:00:00").getTime()/1000;
+		end = Date.parse("5-1-"+now_year+" 00:00:00").getTime()/1000;
+	}else{
+		start = Date.parse("1-5-"+now_year+" 00:00:00").getTime()/1000;
+		end = Date.parse("1-8-"+now_year+" 00:00:00").getTime()/1000;
+	}
+	$(".json_data").hide();	
+	$(".login").hide();
+	$("#bnt_myporty").click(function(){
+		$(".login").show();
+		$(".json_data").hide();
+	});
+	$("#bnt_json").click(function(){
+		$(".json_data").html('<iframe id="aaaa" src="https://myportal.vtc.edu.hk/wps/myportal/!ut/p/a1/04_Sj9CPykssy0xPLMnMz0vMAfGjzOINPS1dDY39DXwM_P0MDBwNvQIMPAOMDA38jYAKIoEKDHAARwNC-sP1o8BKvPxdTAz9LYy8LQy9gUoC_SxcnMOCDQ08zaAK8FhRkBthkOmoqAgAjKg6fg!!/dl5/d5/L2dBISEvZ0FBIS9nQSEh/pw/Z7_L0A6HJK0L8OK60A5PDCUL53004/res/c=cacheLevelPage/=/?start=' + start + '&end='+ end +'"></iframe>');
+		$(".login").hide();
+		$(".json_data").show();
+	});
+</script>
+<style>
+	.bar{
+		text-align: center;
+		font-size: 2em;
+		border-bottom: 1px solid gray;
+		padding: 0.5em 0px
+	}
+	.iframe{
+		-webkit-overflow-scrolling: touch;
+		overflow-y: scroll;
+		margin: 0px auto;
+		background-color: white;
+		width: 100%;
+		height:500px;
+		border: 1px solid black;
+	}
+	iframe{
+		width: 100%;
+		height:500px;
+	}
+</style>
