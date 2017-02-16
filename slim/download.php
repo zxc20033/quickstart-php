@@ -1,7 +1,17 @@
 <?php
 $json_event = $_POST['json'];
 $test = json_decode(str_replace('\n', '', $json_event), true);
+function alert($msg) {
+    echo "<script type='text/javascript'>alert('$msg');</script>";
+}
 
+function isJSON($string){
+   return is_string($string) && is_array(json_decode($string, true)) ? true : false;
+}
+if (isJSON($test)==false){
+alert("Please Enter Correct Data");
+	exit;
+}
 $schedules = "BEGIN:VCALENDAR
 VERSION:2.0
 METHOD:PUBLISH
@@ -9,6 +19,7 @@ PRODID:";
 $schedules .= "-//Drupal iCal API//EN";
 error_reporting(0);
 ini_set('display_errors', 0);
+
 foreach($test as $event)
 {	
 	$description = explode('講師：', $event['description']);
