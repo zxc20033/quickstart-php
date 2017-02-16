@@ -42,9 +42,9 @@
 	if(now_month > 8 && now_month < 13){
 		start = Date.parse("9-1-"+now_year+" 00:00:00").getTime()/1000;
 		now_year = now_year+1;
-		end = Date.parse("1-20-"+now_year+" 00:00:00").getTime()/1000;
+		end = Date.parse("1-1-"+now_year+" 00:00:00").getTime()/1000;
 	}else if(now_month > 1 && now_month < 5){
-		start = Date.parse("1-20-"+now_year+" 00:00:00").getTime()/1000;
+		start = Date.parse("1-1-"+now_year+" 00:00:00").getTime()/1000;
 		end = Date.parse("6-1-"+now_year+" 00:00:00").getTime()/1000;
 	}else{
 		start = Date.parse("6-1-"+now_year+" 00:00:00").getTime()/1000;
