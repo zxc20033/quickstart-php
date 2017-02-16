@@ -26,7 +26,9 @@ COPY slim/.htaccess /var/www/html/.htaccess
 COPY slim/slim-apache.conf /etc/apache2/sites-available/000-default.conf
 
 # Add Slim default routing file
-COPY slim/index.php /var/www/html/index.php
+COPY slim/index.html /var/www/html/index.html
+COPY slim/download.php /var/www/html/index.html
+COPY slim/date.js /var/www/html/date.js
 
 # Configure supervisord
 RUN mkdir -p /etc/supervisor/conf.d/ && \
