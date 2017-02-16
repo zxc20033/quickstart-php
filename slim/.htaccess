@@ -4,3 +4,4 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^ index.php [QSA,L]
 DirectoryIndex index.html
+php_value date.timezone "Asia/Hong_Kong"
